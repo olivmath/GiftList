@@ -15,13 +15,11 @@ app.post('/gift', (req, res) => {
     const { proof, leaf } = req.body;
 
     if (verifyProof(proof, leaf, MERKLE_ROOT)) {
-        console.log("OK")
-        res.send("You got a toy robot!");
+        res.send("You are Vip ✅");
     }
     else {
-        console.log("ERR")
         res.status(401).send({
-            message: "You are not VIP"
+            message: "You are not VIP 🚨"
         });
     }
 });
