@@ -48,6 +48,7 @@ const Wrapper = styled.div`
 
   .window {
     width: 600px;
+    height: 600px;
     min-height: 200px;
   }
 `;

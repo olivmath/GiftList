@@ -1,5 +1,5 @@
 {
-    "name": "holiday-gift-list",
+    "name": "vip-list",
     "dependencies": {
         "axios": "^1.2.0",
         "cors": "^2.8.5",

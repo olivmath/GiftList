@@ -32,7 +32,7 @@ export default function () {
     const validateProof = async () => {
         let response;
         try {
-            await server.post("/gift", {
+            await server.post("/vip", {
                 leaf: hash(name),
                 proof
             }).then(r => response = r.data);

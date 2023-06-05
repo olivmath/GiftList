@@ -11,7 +11,7 @@ app.use(cors());
 const MERKLE_ROOT = '0xe35e6e14fdf91ecc6adfb74856bcd8a2c22544bd10bded94f2a9fecc77cf630b';
 
 
-app.post('/gift', (req, res) => {
+app.post('/vip', (req, res) => {
     const { proof, leaf } = req.body;
 
     if (verifyProof(proof, leaf, MERKLE_ROOT)) {
