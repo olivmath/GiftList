@@ -15,7 +15,7 @@ const PeaceProof = ({ size, hash, left }) => {
     const red = [153, 0, 51, 255];
     if (hash) {
         const icon = new Identicon(hash, {
-            background: [255, 255, 255, 255],
+            background: [0, 0, 0, 0],
             foreground: left ? blue : red,
             format: 'svg',
             size: size,
