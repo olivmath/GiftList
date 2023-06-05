@@ -68,6 +68,15 @@ const Wrapper = styled.div`
     }
 `;
 
+
+const PopupContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+`;
+
 export default {
-    Wrapper
+    Wrapper,
+    PopupContainer
 };

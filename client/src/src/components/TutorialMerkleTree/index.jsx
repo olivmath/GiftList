@@ -2,6 +2,22 @@ import React from 'react';
 import { Window, WindowContent, WindowHeader, Button } from 'react95';
 import style from './style';
 
+const Popup = ({ message }) => {
+    return (
+        <Window>
+            <WindowHeader className='window-title'>
+                <span>Server Response</span>
+                <Button>
+                    <span className='close-icon' />
+                </Button>
+            </WindowHeader>
+            <WindowContent>
+                <p>{message}</p>
+            </WindowContent>
+        </Window>
+    )
+}
+
 export default function ({ onClose }) {
     return (
         <style.Wrapper>
@@ -26,12 +42,17 @@ export default function ({ onClose }) {
                         <li>The generated proof consists of a list of hash values that authenticate the path from the selected name to the Merkle Root.</li>
                     </ul>
                     <h1>Server Component 💻</h1>
-                        <ul>
-                            <li>The server stores the 32-byte Merkle Root, which represents the integrity of the VIP list.</li>
-                            <li>It receives the name and proof from the client.</li>
-                            <li>The server verifies the received proof by comparing it with the stored Merkle Root.</li>
-                            <li><div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '300px' }}><span>If the proof is valid:</span><span>"You are VIP ✅"</span></div></li>
-                            <li><div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '300px' }}><span>If not:</span><span>"You are not VIP 🚨"</span></div></li>
+                    <ul>
+                        <li>The server stores the 32-byte Merkle Root, which represents the integrity of the VIP list.</li>
+                        <li>It receives the name and proof from the client.</li>
+                        <li>The server verifies the received proof by comparing it with the stored Merkle Root.</li>
+                        <li>Server validade and respond with 👇</li>
+                        <li>
+                            <style.PopupContainer>
+                                <Popup message="You are Vip ✅" />
+                                <Popup message="You are not VIP 🚨" />
+                            </style.PopupContainer>
+                        </li>
                     </ul>
                 </WindowContent>
             </Window>
