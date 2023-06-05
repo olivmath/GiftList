@@ -8,10 +8,10 @@ import {
 } from 'react95';
 import { MerkleTree, hash } from "../../utils/merkleTree";
 import { VIP_LIST, HASH_VIP_LIST } from "../../utils/vipList"
+
 import server from "../../utils/server"
 import VipList from "./VipList"
 import MerkleProof from "./MerkleProof"
-import PopupWindow from "./PopupWindow"
 
 const MTREE = new MerkleTree(HASH_VIP_LIST)
 
@@ -69,14 +69,18 @@ export default function () {
                 </WindowContent>
             </Window>
             {responseWindows.map((window, index) => (
-              <PopupWindow
-                  key={index}
-                  message={window.message}
-                  top={window.top}
-                  left={window.left}
-                  onClose={() => closeWindow(index)}
-              />
-          ))}
+                <Window key={index} className='popup-window' style={{ position: 'fixed', top: window.top, left: window.left }}>
+                    <WindowHeader className='window-title'>
+                        <span>Server Response</span>
+                        <Button onClick={() => closeWindow(index)}>
+                            <span className='close-icon' />
+                        </Button>
+                    </WindowHeader>
+                    <WindowContent>
+                        <p>{window.message}</p>
+                    </WindowContent>
+                </Window>
+            ))}
         </styles.Wrapper>
     );
 }
