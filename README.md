@@ -1,26 +1,53 @@
-# Gift List
+# VIP List 😎
 
-To get started with the repository, clone it and then run `npm install` in the top-level directory to install the depedencies.
+This project consists of two main components:
+  - [**./client**](#client-component-🖥️)
+  - [**./server**](#server-component-💻).
 
-There are three folders in this repository:
+# How this project works? 🌳
 
-## Client
+In this project, the client component is responsible for maintaining the list of names, while the server component stores only the Merkle Root. This approach allows for efficient storage and verification of names in the VIP list.
 
-You can run the client from the top-level directory with `node client/index`. This file is a script which will send an HTTP request to the server.
+# Client Component 🖥️
 
-Think of the client as the _prover_ here. It needs to prove to the server that some `name` is in the `MERKLE_ROOT` on the server. 
+- The client provides a user interface for selecting a name from the VIP list.
+- It generates a Merkle proof for the selected name using the Merkle Tree structure.
+- The generated proof consists of a list of hash values that authenticate the path from the selected name to the Merkle Root.
 
-## Server
+## Run client
 
-You can run the server from the top-level directory with `node server/index`. This file is an express server which will be hosted on port 1225 and respond to the client's request.
+1 - Go to `./client` and install dependencies
 
-Think of the server as the _verifier_ here. It needs to verify that the `name` passed by the client is in the `MERKLE_ROOT`. If it is, then we can send the gift! 
+```js
+cd ./client
+yarn install // or npm install
+```
 
-## Utils
+2 - Run the project
 
-There are a few files in utils:
+```js
+yarn dev // or npm run dev
+```
 
-- The `niceList.json` which contains all the names of the people who deserve a gift this year (this is randomly generated, feel free to add yourself and others to this list!)
-- The `example.js` script shows how we can generate a root, generate a proof and verify that some value is in the root using the proof. Try it out from the top-level folder with `node/example.js`
-- The `MerkleTree.js` should look familiar from the Merkle Tree module! This one has been modified so you should not have to deal with any crypto type conversion. You can import this in your client/server
-- The `verifyProof.js` should also look familiar. This was the last stage in the module. You can use this function to prove a name is in the merkle root, as show in the example.
+# Server Component 💻
+
+- The server stores the 32-byte Merkle Root, which represents the integrity of the VIP list.
+- It receives the name and proof from the client.
+- The server verifies the received proof by comparing it with the stored Merkle Root.
+- If the proof is valid: `{status: 200, message: "You are VIP ✅"}`
+- If not: `{status: 401, message: "You are not VIP 🚨"}`
+
+## Run server
+
+1 - Go to `./server` and install dependencies
+
+```js
+cd ./server
+yarn install // or npm install
+```
+
+2 - Run the project
+
+```js
+yarn dev // or npm run dev
+```
