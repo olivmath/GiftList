@@ -54,7 +54,7 @@ export default function () {
             <Window className='window'>
                 <WindowHeader className='window-title'>
                     <span>MerkleTree.exe</span>
-                    <Button>
+                    <Button onClick={() => setResponseWindows([])}>
                         <span className='close-icon' />
                     </Button>
                 </WindowHeader>
