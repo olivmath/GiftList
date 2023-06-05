@@ -50,11 +50,10 @@ const Wrapper = styled.div`
     }
 
     .window {
-        width: 600px; 
+        width: 650px; 
         height: 600px; 
         min-height: 200px;
     }
-
 
     h1 {
         font-size: 1.2rem;

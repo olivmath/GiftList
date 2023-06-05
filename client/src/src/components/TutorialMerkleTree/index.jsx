@@ -26,15 +26,13 @@ export default function ({ onClose }) {
                         <li>The generated proof consists of a list of hash values that authenticate the path from the selected name to the Merkle Root.</li>
                     </ul>
                     <h1>Server Component 💻</h1>
-                    <p>
                         <ul>
                             <li>The server stores the 32-byte Merkle Root, which represents the integrity of the VIP list.</li>
                             <li>It receives the name and proof from the client.</li>
                             <li>The server verifies the received proof by comparing it with the stored Merkle Root.</li>
                             <li><div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '300px' }}><span>If the proof is valid:</span><span>"You are VIP ✅"</span></div></li>
                             <li><div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '300px' }}><span>If not:</span><span>"You are not VIP 🚨"</span></div></li>
-                        </ul>
-                    </p>
+                    </ul>
                 </WindowContent>
             </Window>
         </style.Wrapper>
