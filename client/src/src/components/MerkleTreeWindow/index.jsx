@@ -25,8 +25,8 @@ export default function () {
     };
 
     const generateProof = async () => {
-        const proofData = MTREE.getProof(HASH_VIP_LIST.indexOf(hash(name)));
-        setProof(proofData);
+        const proof = MTREE.getProof(HASH_VIP_LIST.indexOf(hash(name)));
+        setProof(proof);
     };
 
     const validateProof = async () => {
