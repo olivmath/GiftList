@@ -18,7 +18,7 @@ const MTREE = new MerkleTree(HASH_VIP_LIST)
 export default function () {
     const [name, setName] = useState("");
     const [proof, setProof] = useState();
-
+    const [responseWindows, setResponseWindows] = useState([]);
 
     const handleSelectChange = (option) => {
         setName(option.value);
@@ -37,11 +37,17 @@ export default function () {
                 proof
             }).then(r => response = r.data);
         } catch (error) {
-            response = error
+            console.log(error)
+            if (error.response) {
+                response = error.response.data.message;
+            }
         }
-        console.log(response)
+        setResponseWindows(prevWindows => [...prevWindows, { message: response, top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }]);
     };
 
+    const closeWindow = (index) => {
+        setResponseWindows(prevWindows => prevWindows.filter((_, i) => i !== index));
+    };
 
     return (
         <styles.Wrapper>
@@ -62,6 +68,19 @@ export default function () {
                     )}
                 </WindowContent>
             </Window>
+            {responseWindows.map((window, index) => (
+                <Window key={index} className='popup-window' style={{ position: 'fixed', top: window.top, left: window.left }}>
+                    <WindowHeader className='window-title'>
+                        <span>Server Response</span>
+                        <Button onClick={() => closeWindow(index)}>
+                            <span className='close-icon' />
+                        </Button>
+                    </WindowHeader>
+                    <WindowContent>
+                        <p>{window.message}</p>
+                    </WindowContent>
+                </Window>
+            ))}
         </styles.Wrapper>
     );
 }

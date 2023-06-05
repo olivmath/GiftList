@@ -47,7 +47,7 @@ const Wrapper = styled.div`
   }
 
   .window {
-    width: 400px;
+    width: 600px;
     min-height: 200px;
   }
 `;
