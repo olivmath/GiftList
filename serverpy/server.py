@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-CORS(app)  # Isso habilita o CORS para todas as rotas
+CORS(app)
 
 
 MERKLE_ROOT = "0xe35e6e14fdf91ecc6adfb74856bcd8a2c22544bd10bded94f2a9fecc77cf630b"
