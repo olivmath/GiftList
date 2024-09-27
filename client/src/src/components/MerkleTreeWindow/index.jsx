@@ -35,7 +35,9 @@ export default function () {
             await server.post("/vip", {
                 leaf: hash(name),
                 proof
-            }).then(r => response = r.data);
+            }).then(r => {
+                response = r.data.message;
+            });
         } catch (error) {
             console.log(error)
             if (error.response) {
