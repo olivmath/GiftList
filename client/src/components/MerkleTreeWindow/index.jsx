@@ -12,8 +12,10 @@ import { VIP_LIST, HASH_VIP_LIST } from "../../utils/vipList"
 import server from "../../utils/server"
 import VipList from "./VipList"
 import MerkleProof from "./MerkleProof"
+import LibMerkleTreeJS from "../../utils/lib.merkletreejs"
 
 const MTREE = new MerkleTree(HASH_VIP_LIST)
+const LIB_MTREE = new LibMerkleTreeJS(HASH_VIP_LIST)
 
 export default function () {
     const [name, setName] = useState("");
@@ -26,7 +28,11 @@ export default function () {
 
     const generateProof = async () => {
         const proof = MTREE.getProof(HASH_VIP_LIST.indexOf(hash(name)));
-        setProof(proof);
+
+        // USING `MERKLETREEJS` LIB
+        const libProof = LIB_MTREE.getProof(HASH_VIP_LIST.indexOf(hash(name)));
+
+        setProof(libProof);
     };
 
     const validateProof = async () => {
